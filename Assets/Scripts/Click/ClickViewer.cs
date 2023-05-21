@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
+using PrimeTween;
 using UnityEngine;
 using UnityEngine.UI;
-using Utilities;
 
 public class ClickViewer : MonoBehaviour
 {
@@ -22,8 +21,7 @@ public class ClickViewer : MonoBehaviour
         sequence.Append(circle.DOFade(0, FADE_DURATION / 2))
             .Join(ripple.DOFade(0, FADE_DURATION))
             .Join(ripple.rectTransform.DOScale(2f, FADE_DURATION))
-            .SetLink(gameObject)
-            .OnComplete(() => Destroy(gameObject));
+            .ChainCallback(() => Destroy(gameObject));
     }
 
     public void SetColor(Color color)

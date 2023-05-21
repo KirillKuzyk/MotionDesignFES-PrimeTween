@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
+using PrimeTween;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,8 +32,6 @@ public class Crown : MonoBehaviour
     /// </summary>
     private void PlayAnimation()
     {
-        var param = new TweenParams().SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
-        
         DOTween.Sequence()
             .Append(stand.DOAnchorPosY(UP_POS, 0))
             .Join(crown.DOAnchorPosY(UP_POS, 0))
@@ -50,14 +48,11 @@ public class Crown : MonoBehaviour
             .Join(crown.DOLocalRotate(Vector3.forward * -2f, 0.4f))
             .Join(shadow.DOFade(0.16f, 0.4f))
             .Join(shadow.rectTransform.DOScale(1f, 0.4f))
-            .AppendCallback(() =>
-            {
-                DOTween.Sequence()
-                    .Append(crown.DOAnchorPosY(30f, 0.8f))
-                    .Join(shadow.DOFade(0, 0.8f))
-                    .Join(shadow.rectTransform.DOScale(1.12f, 0.8f))
-                    .SetAs(param);
-                crown.DOLocalRotate(Vector3.forward * 2f, 0.55f).SetAs(param);
+            .AppendCallback(() => {
+                crown.DOAnchorPosY(30f, 0.8f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+                shadow.DOFade(0, 0.8f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+                shadow.rectTransform.DOScale(1.12f, 0.8f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+                crown.DOLocalRotate(Vector3.forward * 2f, 0.55f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
             })
             .Append(lights.DOScale(1, 0.4f))
             .AppendCallback(() =>

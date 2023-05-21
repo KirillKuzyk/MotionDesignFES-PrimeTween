@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
+using PrimeTween;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -21,7 +21,7 @@ public class OnOffToggle : MonoBehaviour, IPointerDownHandler
     [SerializeField] private Color activeOffColor;
 
     private bool isOn;
-    private Sequence sequence;
+    private Sequence? sequence;
     
 
     /// <summary>
@@ -62,7 +62,7 @@ public class OnOffToggle : MonoBehaviour, IPointerDownHandler
         var circleSize = isOn ? 800f : 0;
 
         sequence = DOTween.Sequence()
-            .OnStart(() =>
+            .ChainCallback(() =>
             {
                 inactiveText.color = inactiveColor;
                 handleFront.color = inactiveColor;

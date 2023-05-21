@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
+using PrimeTween;
 using Extensions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -93,7 +93,7 @@ public class Shapes : MonoBehaviour
                     DOTween.Sequence()
                         .Append(triangles[i].DOScale(1, BEAT * 3 / 2))
                         .Join(triangles[i].DOAnchorPos(trianglePoses[i], BEAT * 3 / 2).SetEase(Ease.OutCirc))
-                        .Join(triangles[i].DOLocalRotate(Vector3.forward * 180, BEAT * 3 / 2, RotateMode.FastBeyond360).SetRelative(true))
+                        .Join(triangles[i].DOLocalRotate(Vector3.forward * 180, BEAT * 3 / 2).SetRelative(true))
                         .Append(triangles[i].DOScale(0, BEAT / 2));
                 }
             })

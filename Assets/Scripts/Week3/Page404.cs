@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
+using PrimeTween;
 using Extensions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,7 +25,7 @@ public class Page404 : MonoBehaviour
     private void PlayAnimation()
     {
         DOTween.Sequence()
-            .OnStart(() =>
+            .ChainCallback(() =>
             {
                 foreach (var image in images404) image.SetAlpha(0);
                 background.localScale = Vector3.one * 2f;
@@ -34,7 +34,7 @@ public class Page404 : MonoBehaviour
                     .Append(images404[0].DOFade(1, 0.4f))
                     .Join(images404[1].DOFade(1, 0.4f))
                     .Join(images404[2].DOFade(1, 0.4f))
-                    .OnComplete(() =>
+                    .ChainCallback(() =>
                     {
                         background.DOScale(1.04f, 1f)
                             .SetEase(Ease.InOutQuad)

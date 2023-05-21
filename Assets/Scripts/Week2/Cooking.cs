@@ -1,4 +1,4 @@
-﻿using DG.Tweening;
+﻿using PrimeTween;
 using UnityEngine;
 
 public class Cooking : MonoBehaviour
@@ -19,7 +19,7 @@ public class Cooking : MonoBehaviour
             .Join(rice.DOLocalRotate(Vector3.zero, 0))
             .Append(panParent.DOLocalRotate(Vector3.back * -20f, 0.2f))
             .Join(panParent.DOLocalRotate(Vector3.back * 40f, 0.4f).SetDelay(0.2f))
-            .Join(rice.DOLocalRotate(Vector3.back * 180, 1f))
+            .Join(rice.DOLocalRotate(Vector3.back * 179, 1f)) // using 180 degrees has unpredictable rotation direction
             .Join(panParent.DOLocalRotate(Vector3.back * -10f, 0.8f).SetDelay(0.4f))
             .Join(rice.DOLocalRotate(Vector3.back * 360, 0.8f).SetEase(Ease.InQuad))
             .Join(panParent.DOLocalRotate(Vector3.zero, 0.2f).SetDelay(0.8f))

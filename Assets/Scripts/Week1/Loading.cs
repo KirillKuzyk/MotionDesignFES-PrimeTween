@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
+using PrimeTween;
 using Extensions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,7 +39,7 @@ public class Loading : MonoBehaviour
             var ripple = ripples[i];
 
             DOTween.Sequence()
-                .OnStart(() =>
+                .ChainCallback(() =>
                 {
                     Initialize(firstPoint, secondPoint, ripple);
                 })

@@ -1,5 +1,4 @@
-﻿using DG.Tweening;
-using DG.Tweening.Plugins.Options;
+﻿using PrimeTween;
 using Extensions;
 using TMPro;
 using UnityEngine;
@@ -15,7 +14,7 @@ public class LikeButton : MonoBehaviour, IPointerDownHandler
     [SerializeField] private Image[] lines;
 
     private bool isLike;
-    private Sequence sequence;
+    private Sequence? sequence;
     
     
     private Vector2[] defaultLinePositions;
@@ -52,7 +51,7 @@ public class LikeButton : MonoBehaviour, IPointerDownHandler
         sequence?.Complete();
 
         sequence = DOTween.Sequence()
-            .OnStart(() =>
+            .ChainCallback(() =>
             {
                 inactiveIcon.SetAlpha(0);
                 activeIcon.SetAlpha(1);
@@ -85,7 +84,7 @@ public class LikeButton : MonoBehaviour, IPointerDownHandler
         inactiveColor.a = 1;
         
         sequence = DOTween.Sequence()
-            .OnStart(() =>
+            .ChainCallback(() =>
             {
                 inactiveIcon.SetAlpha(1);
                 for (var i = 0; i < lines.Length; i++)

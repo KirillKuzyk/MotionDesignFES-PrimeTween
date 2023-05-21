@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
+using PrimeTween;
 using Extensions;
 using UnityEngine;
 using UnityEngine.UI;
