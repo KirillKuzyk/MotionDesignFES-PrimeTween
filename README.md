@@ -1,41 +1,8 @@
-# DOTweenで作ったモーション17種  
-　
- 
- 
-先日まで「MotionDesignFestival（#モデフェス）」というモーションデザインを作るイベントにDOTweenで参戦したので、その際に作ったプロジェクトをまるまる公開しました。  
-　
- 　
-  
+Migration from DOTween to PrimeTween
+---
+This repo shows how a reasonably big project [MotionDesignFES](https://github.com/Yusuke57/MotionDesignFES) with dozens of animations was migrated from DOTween to PrimeTween in a few lines of code.
 
-このプロジェクトの簡単な解説記事 **（是非ご覧ください！）**  
-[https://game-ui.net/?p=975](https://game-ui.net/?p=975)  
+Migrating to PrimeTween gives a significant performance boost, especially on hot code paths because PrimeTween doesn't allocate heap memory and doesn't trigger garbage collection.
 
-Motion Design Festival 公式サイト  
-[https://motion.cocoda.design/](https://motion.cocoda.design/)   
-　
- 　
-  
-
-**17種類のモーションデザイン** を **Unity、DOTween** で制作しました。  
-そのUnityプロジェクトをまるごと公開しています。  
-　
- 
- 
-
-## 環境
-* Unityバージョン: **2019.3.6f1**
-* **Universal Rendering Pipeline（URP）** 
-* DOTween Pro（有料版）
-
-　
- 
- 
-## 注意点
-**DOTweenのアセット自体は含まれていない** ので、各自でAssetStoreからインストールをお願いします。  
-一部TextMeshProの拡張メソッドを使っているため有料版でしか動かない部分もあるかと思います。  
-（大部分は無料版でも動くと思います）  
-
-
-また、「kiitos」「MindPost」「Motion Design Festival」のロゴはイベント関係者の方が作られたものです。  
-GitHub上に公開することに関しては許可をいただきましたが、 **私的利用に留めていただくようお願いいたします。**  
-  
+#### [PrimeTween documentation](https://github.com/KirillKuzyk/PrimeTween)
+#### [Migration guide](https://github.com/KirillKuzyk/PrimeTween#migrating-from-dotween-to-primetween)
