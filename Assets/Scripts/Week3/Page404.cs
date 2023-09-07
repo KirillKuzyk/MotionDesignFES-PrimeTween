@@ -24,23 +24,21 @@ public class Page404 : MonoBehaviour
 
     private void PlayAnimation()
     {
+        foreach (var image in images404) image.SetAlpha(0);
+        background.localScale = Vector3.one * 2f;
         DOTween.Sequence()
+            .Append(background.DOScale(1, 1f))
+            .Append(images404[0].DOFade(1, 0.4f))
+            .Join(images404[1].DOFade(1, 0.4f))
+            .Join(images404[2].DOFade(1, 0.4f))
             .ChainCallback(() =>
             {
-                foreach (var image in images404) image.SetAlpha(0);
-                background.localScale = Vector3.one * 2f;
-                DOTween.Sequence()
-                    .Append(background.DOScale(1, 1f))
-                    .Append(images404[0].DOFade(1, 0.4f))
-                    .Join(images404[1].DOFade(1, 0.4f))
-                    .Join(images404[2].DOFade(1, 0.4f))
-                    .ChainCallback(() =>
-                    {
-                        background.DOScale(1.04f, 1f)
-                            .SetEase(Ease.InOutQuad)
-                            .SetLoops(-1, LoopType.Yoyo);
-                    });
-            })
+                background.DOScale(1.04f, 1f)
+                    .SetEase(Ease.InOutQuad)
+                    .SetLoops(-1, LoopType.Yoyo);
+            });
+        
+        DOTween.Sequence()
             .AppendCallback(() =>
             {
                 compass.DOKill();
