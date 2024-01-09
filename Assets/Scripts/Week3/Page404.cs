@@ -31,7 +31,7 @@ public class Page404 : MonoBehaviour
             .Append(images404[0].DOFade(1, 0.4f))
             .Join(images404[1].DOFade(1, 0.4f))
             .Join(images404[2].DOFade(1, 0.4f))
-            .ChainCallback(() =>
+            .OnComplete(() =>
             {
                 background.DOScale(1.04f, 1f)
                     .SetEase(Ease.InOutQuad)

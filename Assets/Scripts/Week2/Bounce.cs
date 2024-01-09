@@ -50,7 +50,7 @@ public class Bounce : MonoBehaviour
             .Join(ball.rectTransform.DOScaleX(0.8f, 0.2f))
             .Join(ball.rectTransform.DOScale(new Vector3(1, 0.8f, 1), 0.2f).SetDelay(0.2f))
             .SetEase(Ease.Linear)
-            .SetLoops(-1); // todo LoopType.Yoyo is not supported on sequences
+            .SetLoops(-1, LoopType.Yoyo);
     }
     
 }

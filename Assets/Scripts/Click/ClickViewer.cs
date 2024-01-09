@@ -21,7 +21,8 @@ public class ClickViewer : MonoBehaviour
         sequence.Append(circle.DOFade(0, FADE_DURATION / 2))
             .Join(ripple.DOFade(0, FADE_DURATION))
             .Join(ripple.rectTransform.DOScale(2f, FADE_DURATION))
-            .ChainCallback(() => Destroy(gameObject));
+            .SetLink(gameObject)
+            .OnComplete(() => Destroy(gameObject));
     }
 
     public void SetColor(Color color)

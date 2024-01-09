@@ -48,10 +48,13 @@ public class Crown : MonoBehaviour
             .Join(crown.DOLocalRotate(Vector3.forward * -2f, 0.4f))
             .Join(shadow.DOFade(0.16f, 0.4f))
             .Join(shadow.rectTransform.DOScale(1f, 0.4f))
-            .AppendCallback(() => {
-                crown.DOAnchorPosY(30f, 0.8f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
-                shadow.DOFade(0, 0.8f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
-                shadow.rectTransform.DOScale(1.12f, 0.8f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+            .AppendCallback(() =>
+            {
+                DOTween.Sequence()
+                    .Append(crown.DOAnchorPosY(30f, 0.8f))
+                    .Join(shadow.DOFade(0, 0.8f))
+                    .Join(shadow.rectTransform.DOScale(1.12f, 0.8f))
+                    .SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
                 crown.DOLocalRotate(Vector3.forward * 2f, 0.55f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
             })
             .Append(lights.DOScale(1, 0.4f))

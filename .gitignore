@@ -63,7 +63,5 @@ crashlytics-build.properties
 Assets/ExternalAssets.meta
 Assets/ExternalAssets/*
 UserSettings
-Assets/Plugins/PrimeTween
-Assets/Plugins/PrimeTween.meta
 packages-lock.json
 SceneTemplateSettings.json
